@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { GameStateService } from 'src/app/services/game-state-service';
 import { GameBoard } from 'src/app/classes/game-board';
+import { CellType } from 'src/app/classes/enumerations';
 @Component({
   selector: 'app-game-board',
   templateUrl: './game-board.component.html',
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit {
+
+  cellType = CellType;
 
   private playerNameBehaviorSubject: BehaviorSubject<string>;
   playerName$: Observable<string>;
