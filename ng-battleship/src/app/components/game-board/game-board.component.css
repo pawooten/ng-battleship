@@ -11,3 +11,11 @@
   font-size: 0.7em;
   padding-right: 10px;
 }
+table {
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid black;
+  width:30px;
+  height:30px;
+}

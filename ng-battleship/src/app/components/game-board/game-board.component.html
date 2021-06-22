@@ -1,3 +1,11 @@
 <div class='game-board'>
   <span class='player-label'>{{playerLabel$ | async}}</span><span>{{playerName$ | async}}</span>
+  <table>
+    <ng-container *ngFor="let cellRow of (gameBoard$ | async).cells">
+      <tr>
+        <ng-container *ngFor="let cell of cellRow">
+          <td>{{cell}}</td>
+        </ng-container>
+      </ng-container>
+  </table>
 </div>
