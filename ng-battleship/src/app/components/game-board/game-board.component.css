@@ -1,0 +1,13 @@
+.game-board {
+  width:600px;
+  height:600px;
+  border: 2px solid black;
+  background-color: cornflowerblue;
+}
+.span {
+  font-family:'Courier New', Courier, monospace;
+}
+.player-label {
+  font-size: 0.7em;
+  padding-right: 10px;
+}
