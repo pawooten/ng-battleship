@@ -1,11 +1,17 @@
 <div class='game-board'>
-  <span class='player-label'>{{playerLabel$ | async}}</span><span>{{playerName$ | async}}</span>
-  <table>
-    <ng-container *ngFor="let cellRow of (gameBoard$ | async).cells">
-      <tr>
-        <ng-container *ngFor="let cell of cellRow">
-          <td>{{cell}}</td>
-        </ng-container>
-      </ng-container>
-  </table>
+  <div class='inner-game-board'>
+    <div class="game-board-header">
+      <span class='player-label'>{{playerLabel$ | async}}</span><span>{{playerName$ | async}}</span>
+    </div>
+    <div>
+      <table class="game-board-body">
+        <ng-container *ngFor="let cellRow of (gameBoard$ | async).cells">
+          <tr>
+            <ng-container *ngFor="let cell of cellRow">
+              <td [class.hit-cell]="cell === 1" [class.miss-cell]="cell === 2">{{cell}}</td>
+            </ng-container>
+          </ng-container>
+      </table>
+    </div>
+  </div>
 </div>
