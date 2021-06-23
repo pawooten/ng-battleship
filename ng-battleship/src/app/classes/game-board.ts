@@ -1,4 +1,5 @@
 export class GameBoard {
+  width = 10;
   cells: number[][] = [
                         [0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ],
                         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],

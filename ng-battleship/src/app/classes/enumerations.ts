@@ -3,3 +3,10 @@ export enum CellType {
   Hit = 1,
   Miss = 2
 }
+
+export enum CellSize {
+  None,
+  Small,
+  Medium,
+  Large
+}

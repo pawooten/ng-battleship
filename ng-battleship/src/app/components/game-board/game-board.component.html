@@ -11,6 +11,9 @@
               <td
               [class.hit-cell]="cell === cellType.Hit"
               [class.miss-cell]="cell === cellType.Miss"
+              [class.small-cell]="cellSize.Small === (cellSize$ | async)"
+              [class.medium-cell]="cellSize.Medium === (cellSize$ | async)"
+              [class.large-cell]="cellSize.Large === (cellSize$ | async)"
               ></td>
             </ng-container>
           </ng-container>
