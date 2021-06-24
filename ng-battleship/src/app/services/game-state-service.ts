@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
+import { PlayerType } from '../classes/enumerations';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameStateService {
-  get playerName(): string {
-    return 'Mocked Player Name';
-  }
+  private playerTypeBehaviorSubject: BehaviorSubject<PlayerType>;
+  playerType$: Observable<PlayerType>;
 
-  get playerLabel(): string {
-    return 'Mocked Player One Label';
+  constructor()
+  {
+    this.playerTypeBehaviorSubject = new BehaviorSubject<PlayerType>(PlayerType.None);
+    this.playerType$ = this.playerTypeBehaviorSubject.asObservable();
+    this.playerTypeBehaviorSubject.next(PlayerType.PlayerOne);
   }
 }

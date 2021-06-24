@@ -1,7 +1,7 @@
 <div class='game-board'>
   <div class='inner-game-board'>
     <div class="game-board-header">
-      <span class='player-label'>{{playerLabel$ | async}}</span><span>{{playerName$ | async}}</span>
+      <span class='player-label'>{{playerType$ | async | playerTypeDescription}}:</span><span>{{playerName$ | async}}</span>
     </div>
     <div>
       <table class="game-board-body">

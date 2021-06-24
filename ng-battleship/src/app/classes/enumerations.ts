@@ -10,3 +10,9 @@ export enum CellSize {
   Medium,
   Large
 }
+
+export enum PlayerType {
+  None,
+  PlayerOne,
+  PlayerTwo
+}

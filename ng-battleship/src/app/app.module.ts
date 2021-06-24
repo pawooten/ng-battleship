@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameBoardComponent } from './components/game-board/game-board.component';
 
+import { PlayerTypeDescriptionPipe } from './classes/player-type-description-pipe';
 @NgModule({
   declarations: [
     AppComponent,
     GameBoardComponent,
+    PlayerTypeDescriptionPipe,
   ],
   imports: [
     BrowserModule,

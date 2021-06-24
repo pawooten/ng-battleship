@@ -3,6 +3,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { GameStateService } from 'src/app/services/game-state-service';
 import { GameBoard } from 'src/app/classes/game-board';
 import { CellType, CellSize } from 'src/app/classes/enumerations';
+import { UserPreferenceService } from 'src/app/services/user-preference-service';
+import { PlayerType } from '../../classes/enumerations';
 @Component({
   selector: 'app-game-board',
   templateUrl: './game-board.component.html',
@@ -14,38 +16,28 @@ export class GameBoardComponent implements OnInit {
   cellSize = CellSize;
 
   private gameBoard: GameBoard;
-  private playerNameBehaviorSubject: BehaviorSubject<string>;
   playerName$: Observable<string>;
 
-  private playerLabelBehaviorSubject: BehaviorSubject<string>;
-  playerLabel$: Observable<string>;
+  playerType$: Observable<PlayerType>;
 
   private gameBoardBehaviorSubject: BehaviorSubject<GameBoard>;
   gameBoard$: Observable<GameBoard>;
 
-  private cellSizeBehaviorSubject: BehaviorSubject<CellSize>;
   cellSize$: Observable<CellSize>;
 
-  constructor(private gameStateService: GameStateService) {
+  constructor(private gameStateService: GameStateService, private userPreferenceService: UserPreferenceService) {
 
     this.gameBoard = new GameBoard();
 
-    this.playerNameBehaviorSubject = new BehaviorSubject<string>('');
-    this.playerName$ = this.playerNameBehaviorSubject.asObservable();
-    this.playerNameBehaviorSubject.next(this.gameStateService.playerName);
+    this.playerName$ = this.userPreferenceService.playerName$;
 
-    this.playerLabelBehaviorSubject = new BehaviorSubject<string>('');
-    this.playerLabel$ = this.playerLabelBehaviorSubject.asObservable();
-    this.playerLabelBehaviorSubject.next(this.gameStateService.playerLabel);
+    this.playerType$ = this.gameStateService.playerType$;
 
     this.gameBoardBehaviorSubject = new BehaviorSubject<GameBoard>(null);
     this.gameBoard$ = this.gameBoardBehaviorSubject.asObservable();
     this.gameBoardBehaviorSubject.next(this.gameBoard);
 
-    this.cellSizeBehaviorSubject = new BehaviorSubject<CellSize>(CellSize.None);
-    this.cellSize$ = this.cellSizeBehaviorSubject.asObservable();
-
-    this.cellSizeBehaviorSubject.next(this.calculateCellSize(this.gameBoard.width));
+    this.cellSize$ = this.userPreferenceService.cellSize$;
   }
 
   private readonly cellSizesByGameBoardWidth = [ CellSize.Small, CellSize.Medium, CellSize.Large ];
