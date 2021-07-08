@@ -7,6 +7,7 @@ import { GameBoardComponent } from './components/game-board/game-board.component
 
 import { PlayerTypeDescriptionPipe } from './classes/player-type-description-pipe';
 import { UserPreferencesPanelComponent } from './components/user-preferences-panel/user-preferences-panel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { UserPreferencesPanelComponent } from './components/user-preferences-pan
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
