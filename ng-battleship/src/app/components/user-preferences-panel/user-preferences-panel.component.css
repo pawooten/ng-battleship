@@ -1,5 +1,17 @@
-div {
+.user-preference-panel {
   width:400px;
   height:200px;
-  background-color: darkgray;
+  background-color: lightgray;
+}
+.cellSizeContainer {
+  display:flex;
+}
+
+.cellSizeSampleContainer {
+  width:100px;
+  height:100px;
+}
+.cellSizeSampleContainer > div {
+  margin: 0 auto;
+  border: 2px solid black;
 }

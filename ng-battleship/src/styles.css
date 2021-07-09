@@ -2,3 +2,23 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* todo find a better way to do this */
+.small-cell {
+  width: 30px;
+  height: 30px;
+}
+.medium-cell {
+  width:60px;
+  height:60px;
+}
+.large-cell {
+  width:90px;
+  height:90px;
+}
+.miss-cell {
+  background-color: darkgray;
+}
+.hit-cell {
+  background-color: red;
+}
