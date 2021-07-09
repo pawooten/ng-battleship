@@ -24,6 +24,7 @@
 .game-board-body {
   margin:auto;
   background-color: cornflowerblue;
+  width:fit-content;
 }
 span {
   font-family:'Courier New', Courier, monospace;

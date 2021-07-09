@@ -4,20 +4,23 @@
       <span class='player-label'>{{playerType$ | async | playerTypeDescription}}:</span><span>{{playerName$ | async}}</span>
     </div>
     <div>
-      <table class="game-board-body">
-        <ng-container *ngFor="let cellRow of (gameBoard$ | async).cells">
-          <tr>
-            <ng-container *ngFor="let cell of cellRow">
-              <td
-              [class.hit-cell]="cell === cellType.Hit"
-              [class.miss-cell]="cell === cellType.Miss"
-              [class.small-cell]="cellSize.Small === (cellSize$ | async)"
-              [class.medium-cell]="cellSize.Medium === (cellSize$ | async)"
-              [class.large-cell]="cellSize.Large === (cellSize$ | async)"
-              ></td>
+      <div class="game-board-body">
+        <table>
+          <ng-container *ngFor="let cellRow of (gameBoard$ | async).cells">
+            <tr>
+              <ng-container *ngFor="let cell of cellRow">
+                <td
+                [class.hit-cell]="cell === cellType.Hit"
+                [class.miss-cell]="cell === cellType.Miss"
+                [class.small-cell]="cellSize.Small === (cellSize$ | async)"
+                [class.medium-cell]="cellSize.Medium === (cellSize$ | async)"
+                [class.large-cell]="cellSize.Large === (cellSize$ | async)"
+                ></td>
+              </ng-container>
             </ng-container>
-          </ng-container>
-      </table>
+        </table>
+        <app-user-preferences-panel></app-user-preferences-panel>
+      </div>
     </div>
   </div>
 </div>
