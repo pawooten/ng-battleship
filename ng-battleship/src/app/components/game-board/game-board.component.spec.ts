@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameBoardComponent } from './game-board.component';
+import { PlayerTypeDescriptionPipe } from '../../classes/player-type-description.pipe';
+import { UserPreferencesPanelComponent } from '../user-preferences-panel/user-preferences-panel.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 describe('GameBoardComponent', () => {
   let component: GameBoardComponent;
@@ -8,7 +11,12 @@ describe('GameBoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GameBoardComponent ]
+      declarations: [
+        GameBoardComponent,
+        PlayerTypeDescriptionPipe,
+        UserPreferencesPanelComponent
+      ],
+      imports: [ MatSliderModule ]
     })
     .compileComponents();
   }));

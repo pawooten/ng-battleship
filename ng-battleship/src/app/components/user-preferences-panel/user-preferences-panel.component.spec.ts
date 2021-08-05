@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserPreferencesPanelComponent } from './user-preferences-panel.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 describe('UserPreferencesPanelComponent', () => {
   let component: UserPreferencesPanelComponent;
@@ -8,7 +9,8 @@ describe('UserPreferencesPanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserPreferencesPanelComponent ]
+      declarations: [ UserPreferencesPanelComponent ],
+      imports: [ MatSliderModule]
     })
     .compileComponents();
   }));

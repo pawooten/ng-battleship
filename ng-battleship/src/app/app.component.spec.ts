@@ -1,15 +1,23 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { GameBoardComponent } from './components/game-board/game-board.component';
+import { PlayerTypeDescriptionPipe } from './classes/player-type-description.pipe';
+import { UserPreferencesPanelComponent } from './components/user-preferences-panel/user-preferences-panel.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatSliderModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        GameBoardComponent,
+        PlayerTypeDescriptionPipe,
+        UserPreferencesPanelComponent
       ],
     }).compileComponents();
   }));
@@ -26,10 +34,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('ng-battleship');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ng-battleship app is running!');
-  });
 });
