@@ -8,10 +8,14 @@
         <div>
           <span>Cell Size</span>
           <div class="cellSizeSampleContainer">
-            <div class="medium-cell miss-cell"></div>
+            <div class="miss-cell"
+              [class.small-cell]="cellSize.Small === (cellSize$ | async)"
+              [class.medium-cell]="cellSize.Medium === (cellSize$ | async)"
+              [class.large-cell]="cellSize.Large === (cellSize$ | async)">
+            </div>
           </div>
         </div>
-        <mat-slider vertical min="1" max="3" step="1" value="2"></mat-slider>
+        <mat-slider vertical thumbLabel min="1" max="3" step="1" value="2" [displayWith]="getSliderThumbLabel" (change)="onCellSizeChanged($event)"></mat-slider>
       </div>
     </li>
     <li>
