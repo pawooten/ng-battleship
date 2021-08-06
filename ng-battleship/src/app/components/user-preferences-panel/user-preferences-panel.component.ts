@@ -34,6 +34,9 @@ export class UserPreferencesPanelComponent implements OnInit {
       case CellSize.Large:
         return "Large";
         break;
+      case CellSize.None:
+        return "None";
+        break;
       default:
         return "Unknown CellSize";
         break;

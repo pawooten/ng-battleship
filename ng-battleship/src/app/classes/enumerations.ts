@@ -5,10 +5,10 @@ export enum CellType {
 }
 
 export enum CellSize {
-  None,
-  Small,
-  Medium,
-  Large
+  None = 0,
+  Small = 1,
+  Medium = 2,
+  Large = 3
 }
 
 export enum PlayerType {

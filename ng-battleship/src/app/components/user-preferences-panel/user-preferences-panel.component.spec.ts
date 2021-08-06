@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { CellSize } from '../../classes/enumerations';
 import { UserPreferencesPanelComponent } from './user-preferences-panel.component';
-// import { UserPreferenceService } from '../../services/user-preference-service';
+import { UserPreferenceService } from '../../services/user-preference-service';
 
 describe('UserPreferencesPanelComponent', () => {
   let component: UserPreferencesPanelComponent;
@@ -15,7 +15,7 @@ describe('UserPreferencesPanelComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ UserPreferencesPanelComponent ],
       imports: [ MatSliderModule],
-      // providers: [ { UserPreferenceService, MockUserPreferenceService } ]
+      providers: [ { provide: UserPreferenceService, useClass: MockUserPreferenceService } ]
     })
     .compileComponents();
   }));
@@ -30,18 +30,37 @@ describe('UserPreferencesPanelComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize cell size to medium', done => {
+  it('should initialize cell size to small', done => {
     component.cellSize$.subscribe( cellSize => {
-      expect(cellSize).toEqual(CellSize.Medium);
+      expect(cellSize).toEqual(CellSize.Small);
       done();
     });
   });
+
+  it('should return appropriate cellSize labels for recognized enumeration values', done => {
+    const labelsByCellSize = [
+      { key: CellSize.Small, value: "Small"},
+      { key: CellSize.Medium, value: "Medium"},
+      { key: CellSize.Large, value: "Large"},
+      { key: CellSize.None, value: "None"}
+    ];
+    for (let cellSizeLabelPair of labelsByCellSize) {
+      expect(component.getSliderThumbLabel(cellSizeLabelPair.key)).toEqual(cellSizeLabelPair.value);
+    }
+    done();
+  });
+
+  it('should return Unknown CellSize for unrecognized enumeration values', () => {
+    const invalidEnumerationValues = [ -1, -1000, 1000];
+    for (let invalidEnumerationValue of invalidEnumerationValues)
+    {
+      expect(component.getSliderThumbLabel(invalidEnumerationValue)).toEqual('Unknown CellSize');
+    }
+  });
 });
 
-class MockUserPreferenceService {
 
-  private playerNameBehaviorSubject: BehaviorSubject<string>;
-  playerName$: Observable<string>;
+class MockUserPreferenceService {
 
   private cellSizeBehaviorSubject: BehaviorSubject<CellSize>;
   cellSize$: Observable<CellSize>;
@@ -50,9 +69,5 @@ class MockUserPreferenceService {
     this.cellSizeBehaviorSubject = new BehaviorSubject<CellSize>(CellSize.None);
     this.cellSize$ = this.cellSizeBehaviorSubject.asObservable();
     this.cellSizeBehaviorSubject.next(CellSize.Small);
-
-    this.playerNameBehaviorSubject = new BehaviorSubject<string>('');
-    this.playerName$ = this.playerNameBehaviorSubject.asObservable();
-    this.playerNameBehaviorSubject.next('Caroline');
   }
 }
