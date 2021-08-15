@@ -12,7 +12,7 @@ export enum CellSize {
 }
 
 export enum PlayerType {
-  None,
-  PlayerOne,
-  PlayerTwo
+  None = 0,
+  PlayerOne = 1,
+  PlayerTwo = 2
 }

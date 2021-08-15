@@ -6,7 +6,7 @@
     <div>
       <div class="game-board-body">
         <table>
-          <ng-container *ngFor="let cellRow of (gameBoard$ | async).cells">
+          <ng-container *ngFor="let cellRow of (gameBoard$ | async)?.cells">
             <tr>
               <ng-container *ngFor="let cell of cellRow">
                 <td

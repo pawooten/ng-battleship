@@ -33,7 +33,7 @@ export class GameBoardComponent implements OnInit {
 
     this.playerType$ = this.gameStateService.playerType$;
 
-    this.gameBoardBehaviorSubject = new BehaviorSubject<GameBoard>(null);
+    this.gameBoardBehaviorSubject = new BehaviorSubject<GameBoard>(this.gameBoard);
     this.gameBoard$ = this.gameBoardBehaviorSubject.asObservable();
     this.gameBoardBehaviorSubject.next(this.gameBoard);
 
@@ -54,6 +54,7 @@ export class GameBoardComponent implements OnInit {
     if (gameBoardWidth > 6) {
       return CellSize.Large;
     }
+    return CellSize.None;
   }
 
   ngOnInit() {
